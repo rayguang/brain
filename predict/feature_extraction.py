@@ -8,9 +8,15 @@ import numpy as np
 # using Univariate feature selection
 # for more algos, visit:
 # https://scikit-learn.org/stable/modules/feature_selection.html
+# 1) removing feature using VarianceThreshold, removal features that variance does not meet certain threshold. 
+# By default it removes all zero-variance features, i.e., feature has the same value for all samples
+# 2) univariate feature selection
+#    -- SelectKBest: remove all features but the K highest scoring features 
+
+# 3)
 
 # how many features we want to keep
-KEEP_FEATURES = 5
+KEEP_FEATURES = 2
 
 # read csv file
 data = pd.read_csv('crime_prep.csv')
