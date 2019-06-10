@@ -21,7 +21,7 @@ import numpy as np
 # 3)
 
 # how many features we want to keep
-KEEP_FEATURES = 2
+KEEP_FEATURES = 10
 
 # read csv file
 data = pd.read_csv('crime_prep.csv')
