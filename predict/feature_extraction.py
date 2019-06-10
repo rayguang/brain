@@ -4,6 +4,10 @@ from sklearn.feature_selection import f_regression, mutual_info_regression
 import pandas as pd
 import numpy as np
 
+# Question
+# Why use univariate feature selection
+# What are the common criteria to decide how many features to select
+# How to treat missing data
 
 # using Univariate feature selection
 # for more algos, visit:
@@ -12,6 +16,7 @@ import numpy as np
 # By default it removes all zero-variance features, i.e., feature has the same value for all samples
 # 2) univariate feature selection
 #    -- SelectKBest: remove all features but the K highest scoring features 
+#    -- SelectPercentile: remove all but user specified highest scoring percentile of features
 
 # 3)
 
@@ -48,3 +53,4 @@ features_new = SelectKBest(f_regression, k=KEEP_FEATURES).fit_transform(features
 
 # print left features
 print(features_new)
+
