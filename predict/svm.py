@@ -49,7 +49,7 @@ svr_poly    = svm.SVR(kernel='poly', C=100, gamma='auto', degree=3, epsilon=.1, 
 
 # clf.fit(features, target)
 
-clf = svr_poly
+clf = svr_base
 # Cross-validation 
 scores = cross_val_score(clf, features, target, cv=5)
 print("cross validation score: ", scores)
