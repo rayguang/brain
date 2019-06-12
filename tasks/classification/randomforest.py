@@ -47,6 +47,15 @@ df.head()
 # Dataset features
 print(df.info())
 
+# Now use V1 < -3 and V2 > 2 as threshold to identify the fraud transactions
+df['fraud_flagged'] = np.where(np.logical_and(df['V1']<-3, df['V2']>2), 1,0)
+ct=pd.crosstab(df.Class, df.fraud_flagged, rownames=["Fraud_actual"], colnames=["Fraud_flagged"])
+
+print("**** Fraud_actual vs Fraud_flagged ****")
+print(ct)
+
+print("**** Fraud_actual vs Fraud_flagged (%) ****")
+print(ct.apply(lambda r: r/r.sum()*100, axis=1))
 
 # Drop columns/features
 X = df.drop(["Time", "Class", "fraud_flagged"], axis=1)
