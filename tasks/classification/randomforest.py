@@ -83,21 +83,14 @@ CV_model = GridSearchCV(estimator=model, param_grid=param_grid, cv=5, scoring="r
 # fit the model to our training data and obtain best parameters
 CV_model.fit(X_train, y_train)
 
-# Set the clf to the best combination of parameters
-clf = grid_obj.best_estimator_
-
-# Fit the best algorithm to the data. 
-clf.fit(X_train, y_train)
-
-predictions = clf.predict(X_test)
+# obtain predictions from the test data 
+predicted = CV_model.predict(X_test)
 
 # predict probabilities
 probs = CV_model.predict_proba(X_test)
 
-print(accuracy_score(y_test, predictions))
-
 # print the accuracy score, ROC score, classification report and confusion matrix
-print("Accuracy Score: {}\n".format(accuracy_score(y_test, predictions)))
+print("Accuracy Score: {}\n".format(accuracy_score(y_test, predicted)))
 print("ROC score = {}\n".format(roc_auc_score(y_test, probs[:,1])))
-print("Classification Report:\n{}\n".format(classification_report(y_test, predictions)))
-print("Confusion Matrix:\n{}\n".format(confusion_matrix(y_test, predictions)))
+print("Classification Report:\n{}\n".format(classification_report(y_test, predicted)))
+print("Confusion Matrix:\n{}\n".format(confusion_matrix(y_test, predicted)))
